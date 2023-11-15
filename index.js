@@ -27,13 +27,5 @@ var server = app.listen(process.env.API_PORT, (error) => {
         console.error("Error Occurred while connecting to server: ", error);
     } else {
         console.log("App is listining on port " + process.env.API_PORT);
-
-        console.log("Trying to connect to database server...");
-
-        mongoose.connect(process.env.DB_CONNECTION_STRING).then(res => {
-            console.log("Connected to Database Successfully!");
-        }).catch(err => {
-            console.error("Error Occurred while connecting to database: ", err);
-        })
     }
 });
