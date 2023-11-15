@@ -1,0 +1,639 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Invoice Example</title>
+   <style>
+
+            @page{ 
+                size: A4 portrait;
+                margin:0; 
+            }
+        
+            .invoice-box {
+                max-width: 1140px;
+                font-size: 9px;
+                line-height: 18px;
+                font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+                color: #555;
+                position: relative;
+                min-height: 100%;
+            }
+
+            
+
+            .invoice-box table {
+                width: 100%;
+                line-height: inherit;
+                text-align: left;
+            }
+
+            .invoice-box table td {
+                vertical-align: top;
+            }
+
+            .invoice-box table tr td:nth-child(2) {
+                text-align: right;
+            }
+
+           
+
+            .invoice-box table tr.top table td.title {
+                font-size: 9px;
+                line-height: 45px;
+                color: #333;
+            }
+
+            
+
+            .invoice-box table tr.heading td {
+                background: #eee;
+                border-bottom: 1px solid #ddd;
+                font-weight: bold;
+            }
+           
+
+            .box{
+                border : 1px solid #000;
+                padding : 0;
+                margin : 0;
+                font-size : 11px;
+            }
+
+            .font{
+                font-size : 10px;
+                color : #000;
+            }
+
+            .font1{
+                font-size : 16px;
+            }
+
+            .font2{
+                color : #000;
+                font-size : 8px;
+            }
+
+            .font3{
+                color : #000;
+                font-size : 5px;
+                line-height: 7px;
+                letter-spacing: 0ch;
+            }
+
+            .left{
+                text-align: left;
+            }
+
+            .airwayBillNo{
+                padding : 0;
+                background-color : #cccccc;
+                margin : 0;
+                font-size : 11px;
+            }
+
+            .invoice-box.rtl table tr td:nth-child(2) {
+                text-align: left;
+            }
+    </style>
+</head>
+
+<body>
+    <div class="invoice-box">
+       <table cellpadding="0" cellspacing="0">
+            <tr class="top">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td class="title">
+                                <img src="https://tcsexpress.co.uk/wp-content/uploads/2022/04/TCS_Pakistan_logo.png" style="width: 100%; max-width: 150px" />
+                            </td>
+                            <td>
+                                    <div class="font">
+                                        Terms of Delivery : {{termsOfDelivery}}
+                                    </div>
+                                <table class="airwayBillNo">
+                                    <td class="airwayBillNo">
+                                        AIRWAY BILL # {{airwayBill}}
+                                    </td>
+                                </table>
+                                <table>
+                                    <td class="box">
+                                        <div style="display : flex; justify-content : space-between">
+                                            <span>DATE :  </span>
+                                            <span>{{date}}</span>
+                                        </div>
+                                        <div style="display : flex; justify-content : space-between">
+                                            <span>WEIGHT :  </span>
+                                            <span>{{weight}} Kgs</span>
+                                        </div>
+                                        <div style="display : flex; justify-content : space-between">
+                                            <span>PIECES :  </span>
+                                            <span>{{pieces}}</span>
+                                        </div>
+                                    </td>
+                                    <td class="box">
+                                        <div style="display : flex; justify-content : center">
+                                            <span>Dimension Weight</span>
+                                        </div>
+                                        <br />
+                                        <div style="display : flex; justify-content : center; text-align:center">
+                                            Kgs
+                                        </div>
+                                    </td>
+                                </table>
+                            </td>
+                            
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            
+        </table>
+
+        <div style=" margin-bottom:5px; display:flex; flex-direction : row; justify-content : space-between">
+            <div style="display:flex; flex-direction : row; width:52%">
+                <div class="font1" style="width:20px; background-color:#000;color:#fff; diplay:flex; flex-direction:column; justify-content:center; align-items:center;text-align:center; padding : 15px 0;">
+                    <div>S</div>
+                    <div>H</div>
+                    <div>I</div>
+                    <div>P</div>
+                    <div>P</div>
+                    <div>I</div>
+                    <div>E</div>
+                    <div>R</div>
+                </div>
+                <div class="font" style="border : 1px solid #000; width : 100%">
+                    <div style="display:flex; justify-content:space-evenly; border-bottom:1px solid #000;">
+                        <span>FROM: {{from}}</span>
+                        <span>PHONE : {{fromPhone}}</span>
+                    </div>
+                    <div style="padding : 5px">
+                        <div>
+                            SHIPPER NAME :  {{shipperName}}
+                        </div>
+                        <div>
+                            POSTCODE : {{fromPostCode}}
+                        </div>
+                        <div>
+                            ADDRESS : {{fromAddress}}
+                        </div>
+                        <div>
+                            DOOR NO : {{fromDoorNo}}
+                        </div>
+                        <div style="display:flex; flex-direction:row; justify-content:space-between">
+                            <div>
+                                CITY : {{fromCity}}
+                            </div>
+                            <div>
+                                STATE : {{fromState}}
+                            </div>
+                        </div>
+                        <div style="display:flex; flex-direction:row; justify-content:space-between">
+                            <div>
+                                COUNTRY : {{fromCountry}}
+                            </div>
+                            <div>
+                                HS Code :
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display:flex; flex-direction : row; border-top : 1px solid #000;">
+                        <div style="width : 50%; padding-bottom:20px; text-align:center">
+                            YOUR REFERENCE INFORMATION
+                        </div>
+                        <div style="width : 50%; height : fill-available; text-align:center; background-color:#cccccc">
+                            ACCOUNT NUMBER
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display:flex; flex-direction : row; width:45%;">
+                <div class="font1" style="width:20px; background-color:#000;color:#fff; diplay:flex; flex-direction:column; justify-content:center; align-items:center;text-align:center; padding : 5px 0;">
+                    <div>C</div>
+                    <div>O</div>
+                    <div>N</div>
+                    <div>S</div>
+                    <div>I</div>
+                    <div>N</div>
+                    <div>G</div>
+                    <div>E</div>
+                    <div>E</div>
+                </div>
+                <div class="font" style="border : 1px solid #000; width : 100%; ">
+                    <div style="border-bottom:1px solid #000;">
+                        <span style="padding-left : 5px">TO: {{consignee}}</span> 
+                    </div>
+                    <div style="padding : 5px">
+                        <div>
+                           ATTN : {{attn}}
+                        </div>
+                        <div>
+                            ADD : {{toAddress}}
+                        </div>
+
+                        <div style="display:flex; flex-direction:row; justify-content:space-between">
+                            <div>
+                                CITY : {{toCity}}
+                            </div>
+                            <div>
+                                COUNTRY : {{toCountry}}
+                            </div>
+                        </div>
+                       
+                    </div>
+                    <div style="display:flex; flex-direction : row; border-top : 1px solid #000;">
+                        <div style="width : 85%; padding : 5px 5px 0 5px ">
+                            <div>
+                                P.O BOX ADRESSES WILL REQUIRE
+                            </div>
+                            <div>
+                                RECIPIENT'S PHONE NUMBER
+                            </div>
+                            <div>
+                                PHONE : 
+                            </div>
+                            <div>
+                                FAX : 
+                            </div>
+                            <div>
+                                MOBILE : {{consigneePhone}}
+                            </div>
+                        </div>
+                        <div style="width : 50%; text-align:center; background-color:#cccccc">
+                            UPON DELIVERY NOTIFY
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="font" style="margin-bottom:5px; display : flex; flex-direction : row; justify-content:space-between">
+            <div style="width : 48%; border : 1px solid #000; padding:5px; line-height:15px">
+                <div>DESCRIPTION OF CONTENTS : <br>
+                    {{description}}<br>
+                    NON-DOC
+                </div>
+                
+            </div>
+             <div style="width : 48%; border : 1px solid #000; padding:5px">
+                <div>THIRD PARTY COLLECTION ADDRESS :</div>
+           
+            </div>
+        </div>
+
+        <div class="font" style="margin-bottom:5px;display:flex; flex-direction:row; justify-content:space-between; ">
+            <div style="width:71%; border:1px solid #000;">
+                <div class="font1" style="background-color : #000; text-align : center; color: #fff">
+                    SPECIAL HANDLING INSTRUCTION
+                </div>
+                <br>
+                <br>
+                
+            </div>
+            <div style="width:28%; border:1px solid #000; text-align:center">
+                <div class="font1" style="background-color : #000; text-align : center; color: #fff">
+                    VALUE
+                </div>
+                VALUE FOR CUSTOMS<br>
+                $ {{value}}
+            </div>
+        </div>
+        <div class="font" style="display:flex; flex-direction : row; justify-content : space-between">
+            <div style="width:30%; border:1px solid #000;">
+                <div style="background-color : #ccc">
+                    SHIPPER SIGNATURE
+                </div>
+                <div>
+                    (AGREEMENT TO CONDITIONS OF CONTRACT)
+                </div>
+                
+            </div>
+            <div style="width:30%; border:1px solid #000;">
+                <div style="background-color : #ccc">
+                    DRIVER SIGNATURE
+                </div>
+            </div>
+            <div style="width:37%; border:1px solid #000;">
+                <div style="background-color : #ccc">
+                    TO BE COMPLETED ON DELIVERY BY THE CONSIGNEE
+                </div>
+                <div>
+                    SIGNATURE
+                </div>
+                <div>
+                    PRINT NAME
+                </div>
+                <br>
+            </div>
+        </div>
+        <div class="font" style="margin-bottom:5px; display:flex; flex-direction : row; justify-content : space-between">
+            <div style="width:30%; border: 1px solid #000; border-top : 0px">
+                <div style="display : flex; flex-direction : row">
+                    <div style="width : 60%; border-right : 1px solid #000;">
+                        DATE
+                    </div>
+                    <div style="width : 40%">
+                        TIME
+                    </div>
+                </div>
+            </div>
+            <div style="width:30%; border: 1px solid #000; border-top : 0px">
+               <div style="display : flex; flex-direction : row">
+                    <div style="width : 60%; border-right : 1px solid #000;">
+                        DATE
+                    </div>
+                    <div style="width : 40%">
+                        TIME
+                    </div>
+                </div>
+            </div>
+            <div style="width:37%;  border: 1px solid #000; border-top : 0px">
+                
+                <div style="display : flex; flex-direction : row">
+                    <div style="width : 60%; border-right : 1px solid #000;">
+                        DATE
+                    </div>
+                    <div style="width : 40%">
+                        TIME
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+
+        <div class="font2" style="margin-bottom:5px; text-align : center; line-height:10px">
+            <div>THIS IS A NON-NEGOTIABLE AWB ISSUED SUBJECT TO THE COMPANY'S STANDARD TRADING CONDITIONS. A COPY OF WHICH IS AVAILABLE ON REQUEST<br>
+            TCS Express World Wide (UK) Ltd Ph +(44) 208 849 5600 www.tcsexpress.co.uk</div>
+        </div>
+
+        <div class="font3" style="display:flex; flex-direction : row; width :100%;">
+            <div style="width:33%; padding : 2px">
+                <div>Term & Consitions<br>
+                The Shipper/Sender/Client acknowledges and accepts these terms and conditions and relieving
+                TCS (Pvt.) Limited along with all of its affiliated/associated/group companies (hereinafter referred to
+                as “TCS”) from any liabilities, responsibilities, claims, proceedings, suits, etc. against any damage,
+                loss or expense suffered in connection with the services hereunder and also agreeing that TCS will
+                only be responsible for the carriage of parcel/goods/cargowhich is the only function and responsibility
+                of TCS<br>
+                </div>
+                <div>1. TCS Consignment Note:<br>
+                The Consignment Note of TCS (hereinafter referred to as “CN”) is non-negotiable and the
+                Shipper/Sender/Client acknowledges that it has been prepared by the Shipper/Sender/Client or by
+                TCS staff on behalf of the Shipper/Sender/Client. The Shipper/Sender/Client confirms that all the
+                information provided to TCS while booking the shipment are complete and correct including Shippers
+                and Consignee details, goods value declaration etc. The Shipper/Send- er/Client warrants that it is
+                the owner of the parcel/goods/cargo, or that it is the authorized agent of the owner of the goods. In
+                case of any incorrect information or declaration in the CN, the Shipper/Sender/Client acknowledges
+                that TCS will be absolved from any liability or responsibility pertaining to loss, damage or expense
+                suffered by the Shipper/Sender/Client.<br>
+                </div>
+                <div>2. No Variation:<br>
+                These terms and conditions are applicable on all courier, logistics and all other services provided by
+                TCS to the Shipper/Sender/Cli- ent hereunder. No employee, franchisee, agent of TCS or anyone
+                else has any authority to change any of these terms and conditions, or make any promise on
+                behalf of TCS which is in addition to or in conflict with these Terms and Conditions.<br>
+                </div>
+                <div>3. Right of Inspection of Shipment:<br>
+                TCS has the right, but not the obligation, to inspect any shipment including without limitation opening
+                the shipment if required by law and/or regulations. In this regard, the Shipper/Sender/Client
+                agrees that TCS may open and inspect a shipment for any reason at any time as per its discretion. In
+                that event TCS will exercise all the reasonable care, but it shall not be liable for any damage to the
+                shipment or any delay of the shipment or post arising as a result of any such examination.<br>
+                </div>
+                <div>4. Lien of Goods Shipped:<br>
+                TCS shall have a lien on any goods shipped for all freight Charges, Octroi, duties, advances or any
+                other charges of any kind payable by the Shipper/Sender/Client hereunder and may refuse to
+                surrender possession of the goods until such charges are paid.<br>
+                </div>
+                <div>5. Limitation of Liability:<br>
+                The Shipper/Sender/Client agrees that in case of any damage or loss to the shipment or any part
+                thereof, the maximum liability of TCS to pay any compensation for damage or loss or failure to deliver
+                the consignment shall be limited to the lowest of the following:<br>
+                </div>
+                <div>
+                    <ul style="padding-left : 10">
+                        <li>USD 10/- (US Dollar Ten only) in case of document shipments with destination outside Pakistan);</li>
+                        <li>USD 20/- (US Dollar Twenty only) per kilogram in case of parcel shipments with destination outside Pakistan);</li>
+                        <li>The actual value of the document or parcel (lost or damaged), as defined in clause 6 below,
+                            without regard to its commercial utility or special value to the Shipper/Sender/Client, provided the said
+                            loss or damage is suffered solely due to negligence and willful act of TCS (proof of negligence and
+                            willful act of default on part of TCS willbe required).
+                        </li>
+                        <li>The Shipper/Sender/Client will indemnify and keep TCS fully indemnified from and against all
+                        claims, proceedings, costs, expenses, liability, injury, duties, taxes, import duties, loss or
+                        damage in respect of;
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <ol style="padding-left : 5;list-style-type:upper-roman">
+                        <li>Any breach of this agreement by the shipper/Sender/Client;</li>
+                        <li>Any injury or death of any person or damage to any property arising directly or indirectly from any
+                        act, omission, default, negligence of the Shipper/Sender/Client or its agents;
+                        iii) Any claim, cost or demand whatsoever by whomsoever
+                        made in excess of the liability of TCS under these conditions in respect of loss, damage or injury
+                        howsoever caused, whether<br>not by the negligent act of TCS, its servants, agents, franchisee or sub-contractors;</li>
+                        <li>The Shipper/Sender/Client undertakes that no claim shall be made against any Director, Servant,
+                        Employee, Agent, Franchisee, or Sub-Contractors of TCS which imposes or attempts to impose upon
+                        them any liability in connection with<br>any<br>services which are subject to these conditions, and without prejudice to the foregoing, if any such
+                        claim is made, to indemnify TCS against all consequences of such a claim.</li>
+                    </ol>
+                </div>
+                <div>6. Actual Value:
+                    <ul style="padding-left : 10">
+                        <li>The actual value of a document (which terms shall include any item of no commercial value
+                        which is transported hereunder) shall be ascertained by reference to the lowest of either its cost of
+                        its preparation or replacement or reconstruction value at the time and place of shipment, whichever is
+                        less;</li>
+                        <li>The actual value of a parcel/goods/cargo (which terms shall include any item of commercial
+                        value which is transported hereunder) shall be ascertained by reference to the lowest of either its cost
+                        of preparation or replacement or repairing or fair market value at the time and place of shipment,
+                        whichever is less. In no event shall such value exceed the original cost of the parcel/goods/cargo
+                        actually paid by the Shipper/Sender/Client.</li>
+                        <li>The actual value of the document or parcel (lost or damaged), as defined in clause 6 below,
+                            without regard to its commercial utility or special value to the Shipper/Sender/Client, provided the said
+                            loss or damage is suffered solely due to negligence and willful act of TCS (proof of negligence and
+                            willful act of default on part of TCS willbe required).
+                        </li>
+                    </ul><br>
+                </div>
+              
+            </div>
+            <div style="width:33%; padding : 2px">
+                <div>7. Consequential Damages Exclude:<br>
+                TCS shall not be liable in any consequential or special damages or other indirect loss. However arising, whether or not TCS had knowledge that such damages might be incurred, including but limited to loss of income, profit, interest, use of contents or loss of market.</div>
+                <br>
+                <div>8. Liabilities Not Assumed:<br>
+                The Shipper/Sender/Clientacknowledges that the consignment/- shipment shall be transported by
+                road and/or air and shall therefore be exposed to all risks usually to be associated with such mode of
+                transportation. Subject to the aforesaid, TCS will endeavor to exercise its best efforts to
+                provide expeditious deliver in accordance with regular delivery schedule. TCS endeavor to
+                exercise its best efforts to provide expeditious deliver in accord with regular delivery schedule;
+                however, TCS will not, under any circumstances be liable for delay in pick up, transport or delivery of
+                any shipment regardless of the cause of such delay. Further TCS shall not be liable if a shipment is
+                lost, damaged, mis-delivered or not delivered because of circumstances beyond its control. These
+                include but not limited to;
+                <ul style="padding-left : 10">
+                        <li>“Act of God” for example including earthquake, cyclone, storm, flood or “force majeure”. For the
+                        purposes of these terms and conditions, “Force Majeure” means an event which is beyond the
+                        reasonable control of TCS and making it impossible for the purpose of performing its
+                        obligations/duties. TCS shall neither be held liable for any delay in or failure to perform or observe its
+                        obligations under this terms and conditions, if such failures or delays are caused by “Force
+                        Majeure” which includes acts of God such as earthquake, flooding and lightening, wars, riots,
+                        stoppage, accident, explosion, fire, government restrictions, act of terrorism or any other cause
+                        beyond the reasonable control of TCS. In the event of the occurrence of any of the foregoing, the
+                        date of performance shall be deferred for a period of time equal to the time lost by reason of the
+                        delay.
+                        </li>
+                        <li>The act, default or omission of the Shipper/Client/Sender or any other party who claims an
+                        interest in the shipment (include violation of any terms and condition hereof) or any person other than
+                        TCS or of any Government officials or of the Postal service forwarded or other entity or person to
+                        whom a shipment is tendered by TCS or transportation to any location not regularly served by TCS
+                        regardless of whether the Shipper/Client/Sender reported or had knowledge of such third party
+                        delivery arrangements</li>
+                        <li>The nature of the shipment for any defect, characteristic, inherent vice thereof, even if known to TCS whenthe Shipper/Client/Sender- accepted it.</li>
+                        <li>Electrical or magnetic energy erasure or other such damage to electronic or photographic images or recording in any form</li>
+                    </ul><br>
+                    <div>9. Claims:<br>
+                    (1) If the Shipper/Client/Sender is dissatisfied with the service of TCS the Shipper/Client/Sender must notify TCS in writing:<br>
+                    (I) within 30 days from the date the Shipment or Post was tendered to TCS in the case of alleged loss of the shipment, or<br>
+                    (ii) 14 days of receipt of the Shipment or Post in the case of alleged damage. TCS reserves the right to decline to accept any claim not so notified.<br>
+                    (2) In the absence of any such notification, the Shipper/Client/ Sender is deemed to have accepted
+                    that the service has been provided satisfactorily and that the Shipment or Post has been delivered in
+                    accordance with the terms of the agreement between TCS and the Shipper/Client/Sender.<br>
+                    (3) In any event, TCS will be under no liability to accept any claim unless and until the
+                    Shipper/Client/Sender has paid to TCS all charges due under the business arrangement. The
+                    Shipper/ Client/Sender must not set off the amount of this claim against those charges.<br><br>
+                    </div>
+                    <div>
+                        10. Applicability:<br>
+                        These term and conditions shall apply to and insure to benefitTCS (Pvt.) Limited along with all of its affiliated/associated/group companies, and their officers, directors and employees.<br><br>
+                    </div>
+                    <div>
+                        11. Material Not Acceptable For Transportation:<br>
+                        TCS does not accept as a shipment Currency, Jewelry, Bullion, Antiques, Liquor, Stamps, Precious
+                        Metals, Precious Stones, Contraband, no customs declaration is made when required by applicable
+                        customs regulations, Work of Art, Fire arms, Plants, Drugs, Explosives, Animals, Perishable,
+                        Negotiable Instruments in bearer Form, Lewd, Obscene or Pornographic Materials, Industrial
+                        Carbons and Diamonds, its packaging is defective or inadequate,items/articles restricted by IATA
+                        (International Air Transport Association) or ICAO (International Civil Aviation Organization) or
+                        WARSAW Convention relating to International Carriage by Air, hazardous or combustible material or
+                        any other item which is notified by TCS from time to time to be a prohibited item in accordance with
+                        this paragraph, property of carriage of which is prohibited by any law, regulation or statute of
+                        United Kingdom.<br>
+                    </div>
+                    <div>
+                        12. Insurance:<br>
+                        • Unless otherwise expressly agreed in writing, no insurance will be effected by the TCS in respect of the Shipper/Client/Sender's parcel/goods/cargo.<br>
+                        • Should the Shipper/Client/Sender require protection against loss or damage to a Shipment and if
+                        allowed by the terms of agreement, he must notify TCS before tendering the shipment, stating the
+                        nature and value of the goods and the destination of the shipment, specifying the arrangements
+                        required. Any such additional cover will incur further charges to the Shipper/Client/Sender so that
+                        shipments will be subjected to an Insurance policy. The premium for such cover will be quoted as an
+                        Insurance premium and be specific to the individual shipment tendered. Any such insurance cover
+                        would be subject to such terms and conditions as the insurer would stipulate.<br>
+                        • In any event and for the avoidance of doubt any cover arranged will not cover the
+                        Shipper/Client/Sender for Consequential Loss and TCS is not liable for Consequential Loss
+                        howsoever caused<br>
+                    </div>
+
+                </div>
+            </div>
+            <div style="width:33%; padding : 2px">
+                <div>
+                    13. Lawfulness of Shipment/Goods:<br>
+                    It is hereby undertaken and confirmed that the shipment/goods being stored/transported hereunder
+                    through TCS have been acquired by the Shipper/Client/Sender lawfully and no law whatsoever has
+                    been breached in acquisition thereof. It is further undertaken and confirmed that all the relevant and
+                    necessary documents pertaining to the shipments/goods are in possession of Shipper/Client/Sender
+                    who will be liable and responsible to provide all and any document as and when required by TCS for
+                    their onward submission to any Government Agency/Department/Au- thority etc.<br>
+                    • It is further undertaken and confirmed thatthe Shipper/Client/Send- ershall make himself and/or any
+                    documents whatsoever available at all material times and in the event that TCS and/or any Government
+                    Agency/Department/Authority etc. has any query in relation to all and any aspect of shipments/goods.<br>
+                    • It is further undertaken and declared that TCS being only responsible for
+                    warehousing/transportation of shipments/goods of Shipper/Client/Sender, any liability, loss, claim,
+                    demand, action, proceeding etc. as may occasion to TCS shall be made good and be fully indemnified
+                    by the Shipper/Client/Senderin relation thereto.
+                </div>
+                <div>
+                    14. If the Shipper/Client/Sender Has Asked TCS To Bill The Receiver/Third Party:<br>
+                    The Shipper/Client/Sender agrees to pay all shipment charges and destination duties,levies and taxes,
+                    for the shipment if the receiver or third party does not pay with TCS retaining the right to hold onto such
+                    shipment/goods/cargo until such payment is made.
+                </div>
+                <div>
+                    15. Warsaw Convention:<br>
+                    If the transportation of a shipment involves an ultimate destination or stop in a country other than
+                    the country of departure, the Warsaw Convention will apply.
+                    The Warsaw Convention governs, and in most cases furthers limits, TCS`s liability for loss or
+                    damage to such a shipment.
+                </div>
+                <div>
+                    16. Oversized/Odd Sized Shipment:<br>
+                    Additional charges for lifter/cranes, special handling would also apply along with agreed rates and the
+                    shipment weight would be charged gross or volumetric whichever will be higher at the time of its final
+                    weighing by TCS.
+                </div>
+                <div>
+                    17. Variable Fuel Adjustment Would be Applicable As Per Practice/Arrangements:<br>
+                   All the rates/charges pertaining to the shipments shall be subjected to fluctuation of prices in the fuel and TCS`s decision regarding the same shall be final and binding as per the business arrangement
+                </div>
+                <div>
+                    18. Deliverables and Non-Deliverables:<br>
+                    Shipments cannot be delivered to PO boxes or postal codes. Shipments are delivered to the Receiver’s
+                    address given by Shipper/Client/Sender (which in the case of mail services shall be deemed to be the
+                    first receiving postal service) but not necessarily to the named Receiver personally. Shipments to
+                    addresses with a central receiving area will be delivered to that area. If the Shipment is deemed to be
+                    unacceptable, or it has been undervalued for customs purposes, or Receiver cannot be reasonably
+                    identified or located, or Receiver refuses delivery or to pay for delivery, TCS shall use reasonable
+                    efforts to return the Shipment to Shipper
+                    /Client/Sender at his cost, failing which the Shipment may be released, disposed of or sold by TCS
+                    without incurring any liability whatsoever to Shipper/Client/Sender or anyone else, with the proceeds
+                    applied against service charges and related administra- tive costs and the balance of the proceeds of a
+                    sale to be returned to Shipper/Client/Sender
+                </div>
+                <div>
+                    19. Routing:<br>
+                    Shipper/Client/Sender agrees to all routing and diversion, including the possibility that the Shipment may be carried via intermediate stopping places.
+                </div>
+                <div>
+                    20. Governing Laws:<br>
+                    Any dispute arising under or in any way connected with these Terms and Conditions shall be subject,
+                    for the benefit of TCS, to the non-exclusive jurisdiction of the courts of, and governed by the law of, the
+                    country of origin of the Shipment and Shipper irrevocably submits to such jurisdiction, unless
+                    contrary to applicable law.
+                </div>
+                <div>
+                    Important Note:<br>
+                    By the terms and conditions set out above, TCS and its servants and agents are firstly not be liable at
+                    all for certain losses and damages and secondly wherever they are to be liable, the amount of liability is
+                    strictly limited to the amount stated above. Shipper/Cli- ent/Senderare therefore advised to purchase
+                    insurance cover to ensure that their risk and interest are covered.
+                    The shipper/Client/Sender hereby undertake and acknowledge that entire responsibility for payment
+                    of duties, taxes, levies, charges etc. if any, applicable on the shipment rests with it, which has been fully
+                    discharged / paid to government treasury. In case of any issue pertaining to payment of duties, taxes
+                    etc. applicable, shipper/Client/Sender will be solely responsible to satisfy the relevant authorities
+                    accordingly, keeping TCS, its agents, employees, franchisee & directors completely free of these
+                    responsibilities.
+                </div>
+                <div>
+                    Payment to be made within 7 days of receipt of invoice. TCS reserves the right to withdraw any service
+                    facility in case of delay of more than 30 days for settlement of account. In case the account is not
+                    settled within 30 days of receipt of invoice. TCS reserve the right to levy financial charges on
+                    outstanding invoice amount at the rate of 0.1% per day till complete clearance of total dues. Further
+                    Challan/Receipt of any amount deducted by the Shipper/Client Sender/ as withholding tax if applicable
+                    shall be required to be submitted by the Shipper/Client/Sender to TCS so that the same shall be used
+                    by TCS at the time of furnishing its returns.<br>
+                    The invalidity or unenforceability of any provision shall not affect any other part of these Terms and Conditions
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
