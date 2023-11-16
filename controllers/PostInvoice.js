@@ -2,9 +2,18 @@ const fs = require('fs');
 const hbs = require('hbs');
 const htmlPDF = require('puppeteer-html-pdf');
 const readFile = require('util').promisify(fs.readFile);
-
+var JsBarcode = require('jsbarcode');
+var { createCanvas } = require("canvas");
 class PostInvoiceController {
+
+
     static async Execute(req, res) {
+
+        function textToBase64Barcode(text) {
+            var canvas = createCanvas();
+            JsBarcode(canvas, text, { format: "CODE39", displayValue: false, });
+            return canvas.toDataURL("image/png");
+        }
 
         const {
             termsOfDelivery,
@@ -32,6 +41,9 @@ class PostInvoiceController {
         } = req.body;
 
         let buffer;
+
+
+
 
         const options = {
             format: 'A4',
@@ -61,7 +73,8 @@ class PostInvoiceController {
             toCountry: toCountry,
             consigneePhone: consigneePhone,
             description: description,
-            value: value
+            value: value,
+            barCode: textToBase64Barcode(airwayBill)
         }
 
         try {
